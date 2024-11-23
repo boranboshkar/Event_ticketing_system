@@ -50,6 +50,5 @@ Usage
 Users: Sign up, browse events, select tickets, and proceed to checkout.
 Admins: Log into the back-office to manage events and monitor ticket sales.
 
-Event Catalog:
-Admin Back-office:
+enter the following link : https://events-ticketing-system-mahmoud.onrender.com
 
