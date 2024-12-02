@@ -59,13 +59,13 @@ export const fetchUserOrdersWithEvents = async (
   page = 1
 ): Promise<{ data: OrderWithEvent[]; total: number }> => {
   const response = await axios.get(
-    `https://gateway-auth-service-mahmoud.onrender.com/api/orders/user?page=${page}&size=6`
+    `https://gateway-service-7n3t.onrender.com/api/orders/user?page=${page}&size=6`
   );
   const { data, total } = response.data;
 
   const ordersWithEventsPromises = data.map(async (order: Order) => {
     const { data: event } = await axios.get(
-      `https://gateway-auth-service-mahmoud.onrender.com/api/events/${order.eventId}`
+      `https://gateway-service-7n3t.onrender.com/api/events/${order.eventId}`
     );
     return {
       ...order,
@@ -80,7 +80,7 @@ export const fetchUserOrdersWithEvents = async (
 export const RefundOrder = async (orderId: string) => {
   try {
     const response = await axios.post(
-      `https://gateway-auth-service-mahmoud.onrender.com/api/orders/refund/?orderId=${orderId}`
+      `https://gateway-service-7n3t.onrender.com/api/orders/refund/?orderId=${orderId}`
     );
     return response;
   } catch (error) {
@@ -97,7 +97,7 @@ export const PayTheOrder = async (
 ) => {
   try {
     const paymentResult = await axios.put(
-      `https://gateway-auth-service-mahmoud.onrender.com/api/orders/payment?orderId=${orderId}`,
+      `https://gateway-service-7n3t.onrender.com/api/orders/payment?orderId=${orderId}`,
       {
         ...formData,
         charge: quantity * pricePerTicket,
@@ -121,7 +121,7 @@ export const CreateOrder = async (
 ): Promise<Order> => {
   try {
     const { data: orderResponse } = await axios.post<Order>(
-      "https://gateway-auth-service-mahmoud.onrender.com/api/orders",
+      "https://gateway-service-7n3t.onrender.com/api/orders",
       {
         eventId,
         ticketCategory,

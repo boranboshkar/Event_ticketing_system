@@ -1,12 +1,12 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-
+//https://gateway-auth-service-mahmoud.onrender.com
 
 const login = async (username: string, password: string) => {
   try {
     const {data , status} = await axios.post(
-      "https://gateway-auth-service-mahmoud.onrender.com/api/login",
+      "https://gateway-service-7n3t.onrender.com/api/login",
       { username, password }
     );
     Cookies.set("token", data.token);
@@ -22,7 +22,7 @@ const login = async (username: string, password: string) => {
 const signup = async (username: string, password: string) => {
   try {
     const response = await axios.post(
-      "https://gateway-auth-service-mahmoud.onrender.com/api/signup",
+      "https://gateway-service-7n3t.onrender.com/api/signup",
       { username, password },
       {
         withCredentials: true,
@@ -43,7 +43,7 @@ const getUserProfile = async () => {
     const token = Cookies.get("token");
     if (!token) throw new Error("No token found");
     const response = await axios.get(
-      "https://gateway-auth-service-mahmoud.onrender.com/api/userprofile"
+      "https://gateway-service-7n3t.onrender.com/api/userprofile"
     );
     return response.data;
   } catch (error) {

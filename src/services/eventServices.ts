@@ -8,7 +8,7 @@ axios.defaults.withCredentials = true;
 const fetchEvents = async (page = 1): Promise<EventsResponse> => {
   try {
     const { data } = await axios.get<EventsResponse>(
-      `https://gateway-auth-service-mahmoud.onrender.com/api/events?page=${page}&size=8`
+      `https://gateway-service-7n3t.onrender.com/api/events?page=${page}&size=8`
     );
     return data;
   } catch (error) {
@@ -21,7 +21,7 @@ const fetchEvents = async (page = 1): Promise<EventsResponse> => {
 const fetchEventById = async (eventId: string): Promise<Event> => {
   try {
     const { data } = await axios.get<Event>(
-      `https://gateway-auth-service-mahmoud.onrender.com/api/events/${eventId}`
+      `https://gateway-service-7n3t.onrender.com/api/events/${eventId}`
     );
     return data;
   } catch (error) {
@@ -40,7 +40,7 @@ const addCommentToEvent = async (
 
   try {
     await axios.post(
-      `https://gateway-auth-service-mahmoud.onrender.com/api/events/${selectedEventId}/comments`,
+      `https://gateway-service-7n3t.onrender.com/api/events/${selectedEventId}/comments`,
       {
         content: commentText,
       }
@@ -62,7 +62,7 @@ const ReleaseTicket = async (
 ) => {
   try {
     const response = await axios.post(
-      `https://gateway-auth-service-mahmoud.onrender.com/api/events/${eventId}/tickets/release`,
+      `https://gateway-service-7n3t.onrender.com/api/events/${eventId}/tickets/release`,
       {
         categoryId: categoryId,
         quantity: quantity,
@@ -85,7 +85,7 @@ const ReserveTicket = async (
 ) => {
   try {
     const response = await axios.post(
-      `https://gateway-auth-service-mahmoud.onrender.com/api/events/${eventId}/tickets/reserve`,
+      `https://gateway-service-7n3t.onrender.com/api/events/${eventId}/tickets/reserve`,
       {
         ticketCategoryId: categoryId,
         quantity: quantity,
@@ -112,7 +112,7 @@ const updateEvent = async (
     if (endDate) payload.endDate = endDate;
 
     const { data } = await axios.put<Event>(
-      `https://gateway-auth-service-mahmoud.onrender.com/api/events/${eventId}`,
+      `https://gateway-service-7n3t.onrender.com/api/events/${eventId}`,
       payload
     );
     return data;
@@ -142,7 +142,7 @@ const createEvent = async (eventData: CreateEventRequestData): Promise<void> => 
     axios.defaults.withCredentials = true;
 
     const response = await axios.post(
-      "https://gateway-auth-service-mahmoud.onrender.com/api/events",
+      "https://gateway-service-7n3t.onrender.com/api/events",
       eventData
     );
 
